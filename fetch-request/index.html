@@ -24,6 +24,7 @@
     var myRequest = new Request('flowers.jpg');
 
     fetch(myRequest).then(function(response) {
+      console.log(response.bodyUsed);
       return response.blob();
     }).then(function(response) {
       var objectURL = URL.createObjectURL(response);
