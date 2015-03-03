@@ -40,8 +40,8 @@
       var myRequest = new Request(pageId + '.txt');
 
       fetch(myRequest).then(function(response) {
-        return response.text().then(function(response) {
-          myArticle.innerHTML = response; 
+        return response.text().then(function(text) {
+          myArticle.innerHTML = text; 
         });
       });
     }
