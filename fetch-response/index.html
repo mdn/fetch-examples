@@ -26,6 +26,11 @@
     fetch(myRequest).then(function(response) {
       console.log(response.type);
       console.log(response.url);
+      console.log(response.useFinalURL);
+      console.log(response.status);
+      console.log(response.ok);
+      console.log(response.statusText);
+      console.log(response.headers);
       response.blob().then(function(myBlob) {
         var objectURL = URL.createObjectURL(myBlob);
         myImage.src = objectURL;
