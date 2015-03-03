@@ -25,10 +25,11 @@
 
     fetch(myRequest).then(function(response) {
       console.log(response.bodyUsed);
-      return response.blob();
-    }).then(function(response) {
-      var objectURL = URL.createObjectURL(response);
-      myImage.src = objectURL;
+      response.blob().then(function(response) {
+        var objectURL = URL.createObjectURL(response);
+        myImage.src = objectURL;
+      });
+      console.log(response.bodyUsed)
     });
 
   </script>

@@ -44,11 +44,11 @@ function getData() {
   var myRequest = new Request('viper.ogg');
 
   fetch(myRequest).then(function(response) {
-    return response.arrayBuffer();
-  }).then(function(response) {
-    audioCtx.decodeAudioData(response, function(decodedData) {
-      source.buffer = decodedData;
-      source.connect(audioCtx.destination);
+    response.arrayBuffer().then(function(response) {
+      audioCtx.decodeAudioData(response, function(decodedData) {
+        source.buffer = decodedData;
+        source.connect(audioCtx.destination);
+      });
     });
   });
 };

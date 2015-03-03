@@ -25,13 +25,13 @@
     var myRequest = new Request('products.json');
 
     fetch(myRequest).then(function(response) {
-      return response.json();
-    }).then(function(response) {
-      for(i = 0; i < response.products.length; i++) {
-        var listItem = document.createElement('li');
-        listItem.innerHTML = '<strong>' + response.products[i].Name + '</strong> can be found in ' + response.products[i].Location + '. Cost: <strong>£' + response.products[i].Price + '</strong>';
-        myList.appendChild(listItem);
-      } 
+      return response.json().then(function(response) {
+        for(i = 0; i < response.products.length; i++) {
+          var listItem = document.createElement('li');
+          listItem.innerHTML = '<strong>' + response.products[i].Name + '</strong> can be found in ' + response.products[i].Location + '. Cost: <strong>£' + response.products[i].Price + '</strong>';
+          myList.appendChild(listItem);
+        } 
+      });
     });
 
   </script>
