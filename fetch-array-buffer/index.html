@@ -46,7 +46,7 @@ function getData() {
   fetch(myRequest).then(function(response) {
     return response.arrayBuffer();
   }).then(function(response) {
-    audioCtx.decodeAudioData(response).then(function(decodedData) {
+    audioCtx.decodeAudioData(response, function(decodedData) {
       source.buffer = decodedData;
       source.connect(audioCtx.destination);
     });
@@ -57,12 +57,12 @@ function getData() {
 
 play.onclick = function() {
   getData();
-  source.start(0);
+  source.start();
   play.setAttribute('disabled', 'disabled');
 }
 
 stop.onclick = function() {
-  source.stop(0);
+  source.stop();
   play.removeAttribute('disabled');
 }
 
