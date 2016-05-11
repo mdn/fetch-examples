@@ -22,10 +22,11 @@
     var myImage = document.querySelector('.my-image');
 
     fetch('flowers.jpg').then(function(response) {
-      return response.blob();
-    }).then(function(response) {
-      var objectURL = URL.createObjectURL(response);
-      myImage.src = objectURL;
+      response.blob().then(function(myBlob) {
+        var objectURL = URL.createObjectURL(myBlob);
+        myImage.src = objectURL;
+      });
+      console.log(response.bodyUsed);
     });
 
   </script>
