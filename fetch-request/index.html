@@ -20,16 +20,13 @@
   </body>
   <script>
     var myImage = document.querySelector('img');
-
     var myRequest = new Request('flowers.jpg');
 
-    fetch(myRequest).then(function(response) {
-      console.log(response.bodyUsed);
-      response.blob().then(function(myBlob) {
-        var objectURL = URL.createObjectURL(myBlob);
-        myImage.src = objectURL;
-      });
-      console.log(response.bodyUsed);
+    fetch(myRequest)
+    .then(function(response) { return response.blob(); })
+    .then(function(myBlob) {
+      var objectURL = URL.createObjectURL(myBlob);
+      myImage.src = objectURL;
     });
 
   </script>

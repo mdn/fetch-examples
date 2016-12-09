@@ -24,17 +24,19 @@
     var myHeaders = new Headers();
     myHeaders.append('Content-Type', 'image/jpeg');
 
-    var myInit = { method: 'GET',
-                   headers: myHeaders,
-                   mode: 'cors',
-                   cache: 'default' };
+    var myInit = {
+      method: 'GET',
+      headers: myHeaders,
+      mode: 'cors',
+      cache: 'default'
+    };
 
     var myRequest = new Request('flowers.jpg');
 
-    fetch(myRequest,myInit).then(function(response) {
-      return response.blob();
-    }).then(function(response) {
-      var objectURL = URL.createObjectURL(response);
+    fetch(myRequest, myInit)
+    .then(function(response) { return response.blob(); })
+    .then(function(blob) {
+      var objectURL = URL.createObjectURL(blob);
       myImage.src = objectURL;
     });
 

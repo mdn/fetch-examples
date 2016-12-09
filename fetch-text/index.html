@@ -27,22 +27,22 @@
   <script>
     var myArticle = document.querySelector('article');
     var myLinks = document.querySelectorAll('ul a');
-    for(i = 0; i <= myLinks.length-1; i++) {
+    for(var i = 0; i <= myLinks.length - 1; i++) {
       myLinks[i].onclick = function(e) {
         e.preventDefault();
         var linkData = e.target.getAttribute('data-page');
         getData(linkData);
       }
     };
-    
+
     function getData(pageId) {
       console.log(pageId);
       var myRequest = new Request(pageId + '.txt');
 
-      fetch(myRequest).then(function(response) {
-        return response.text().then(function(text) {
-          myArticle.innerHTML = text; 
-        });
+      fetch(myRequest)
+      .then(function(response) { return response.text() })
+      .then(function(text) {
+        myArticle.innerHTML = text;
       });
     }
 
